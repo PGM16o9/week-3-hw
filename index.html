@@ -4,13 +4,40 @@
 	<title>The Psychic Game</title>
 </head>
 <body>
+	
 	<h1>The Psychic Game</h1>
 	<p>Guess what letter I'm thinking of</p>
+	<p id="wins">Wins: 0</p>
+	<p id="losses">Losses: 0</p>
+	<p id="NumGueLeft">Guesses Left: 9</p>
+	<p id="guesses">Your Guesses so far:</p>
+
 	<script type="text/javascript">
-		var letters = [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z]
-		var ranNumZeroToArrLength = math.random() * letters.length
-		var roundedNum = math.floor(ranNumZeroToArrLength)
-		var ranLetter = letters[roundedNum]
+
+		var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+		var ranNumZeroToArrLength = Math.random() * letters.length;
+		var roundedNum = Math.floor(ranNumZeroToArrLength);
+		var ranLetter = letters[roundedNum];
+
+	document.onkeyup = function(event) {
+	//console.log(String.fromCharCode(event.keyCode).toLowerCase());
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+	var AllGuesses = [];
+	
+	console.log(userGuess)
+	AllGuesses.push(userGuess);
+
+		document.getElementById("guesses").innerHTML = 'Your Guesses so far:' + ' ' + AllGuesses;
+	}
+
+		var	NumWins	= 3;
+		var	NumLost = 2;
+		var GuessLeft = 0;
+
+	document.getElementById("wins").innerHTML = 'Wins:' + ' ' + NumWins;
+	document.getElementById("losses").innerHTML = 'Losses:' + ' ' + NumLost;
+	document.getElementById("NumGueLeft").innerHTML = 'Guesses Left:' + ' ' + GuessLeft;
 	</script>
+
 </body>
 </html>
