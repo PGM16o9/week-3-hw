@@ -15,9 +15,8 @@
 	<script type="text/javascript">
 
 		var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-		var ranNumZeroToArrLength = Math.random() * letters.length;
-		var roundedNum = Math.floor(ranNumZeroToArrLength);
-		var ranLetter = letters[roundedNum];
+		var computerChoice = letters[Math.floor(Math.random() * letters.length)];
+		var	userChoice = String.fromCharCode(event.keyCode).toLowerCase();
 
 	document.onkeyup = function(event) {
 	//console.log(String.fromCharCode(event.keyCode).toLowerCase());

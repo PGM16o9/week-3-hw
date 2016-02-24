@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Psychic Game</title>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+<body>
+	
+	<h1>The Psychic Game</h1> <br>
+
+	<div id="game">
+		
+	</div>
+	
+	<p id="wins">Wins: 0</p> <br>
+	<p id="losses">Losses: 0</p> <br>
+	<p id="NumGueLeft">Guesses Left: 9</p> <br>
+	<p id="guesses">Your Guesses so far:</p>
+
+
+	<script type="text/javascript">
+	var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+	
+	document.onkeyup = function(event) {	
+		var computerChoice = letters[Math.floor(Math.random() * letters.length)];
+		var	userChoice = String.fromCharCode(event.keyCode).toLowerCase();
+
+		if (computerChoice == userChoice) {
+			for (var i = 0; i <= 9; i++) {
+				document.getElementById("wins").innerHTML = 'Wins:' + ' ' + i
+			}	}
+
+		document.getElementById("guesses").innerHTML = 'Your Guesses so far:' + ' ' + userChoice 
+	}
+	</script>
+</body>
+</html>
