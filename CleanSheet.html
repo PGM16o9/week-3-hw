@@ -14,7 +14,7 @@
 	<div id="game">
 		
 	</div>
-	
+
 	<p id="wins">Wins: 0</p> <br>
 	<p id="losses">Losses: 0</p> <br>
 	<p id="NumGueLeft">Guesses Left: 9</p> <br>
@@ -23,18 +23,43 @@
 
 	<script type="text/javascript">
 	var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+	var	wins = 0;
+	var losses = 0;
+	var	guessesLeft = 9;
+	var guesses = [];
 	
 	document.onkeyup = function(event) {	
-		var computerChoice = letters[Math.floor(Math.random() * letters.length)];
-		var	userChoice = String.fromCharCode(event.keyCode).toLowerCase();
+		var computerPredict = letters[Math.floor(Math.random() * letters.length)];
+		var	userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-		if (computerChoice == userChoice) {
-			for (var i = 0; i <= 9; i++) {
-				document.getElementById("wins").innerHTML = 'Wins:' + ' ' + i
-			}	}
+		console.log(userGuess);
 
-		document.getElementById("guesses").innerHTML = 'Your Guesses so far:' + ' ' + userChoice 
-	}
+		if ((userGuess == 'a')||(userGuess == 'b')||(userGuess == 'c') ||(userGuess == 'd')||(userGuess == 'e')||(userGuess == 'f')||(userGuess == 'g')||(userGuess == 'h')||(userGuess == 'i')||(userGuess == 'j')||(userGuess == 'k')||(userGuess == 'l')||(userGuess == 'm')||(userGuess == 'n')||(userGuess == 'o')||(userGuess == 'p')||(userGuess == 'q')||(userGuess == 'r')||(userGuess == 's')||(userGuess == 't')||(userGuess == 'u')||(userGuess == 'v')||(userGuess == 'w')||(userGuess == 'x')||(userGuess == 'y')||(userGuess == 'z')) {
+			
+			if (computerPredict == userGuess) {
+			wins++;
+			}	
+			if (computerPredict != userGuess ) {
+			losses++;
+			}
+			if (userGuess.length>0) {
+			guessesLeft--;
+		}
+	
+		}
+
+		var	html = "<p id=/"wins">Wins: 0</p> <br>
+					<p id="losses">Losses: 0</p> <br>
+					<p id="NumGueLeft">Guesses Left: 9</p> <br>
+					<p id="guesses">Your Guesses so far:</p>"
+		}
+
+		document.getElementById("guesses").innerHTML = 'Your Guesses so far:' + ' ' + guesses;
+		document.getElementById("wins").innerHTML = 'Wins:' + ' ' + wins;
+		document.getElementById("losses").innerHTML = 'Losses:' + ' ' +losses;
+
+		document.getElementById("NumGueLeft").innerHTML = 'Guesses Left:' + ' ' + guessesLeft;
+	
 	</script>
 </body>
 </html>
