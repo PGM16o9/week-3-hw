@@ -16,26 +16,40 @@
 
 		var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 		var computerChoice = letters[Math.floor(Math.random() * letters.length)];
-		var	userChoice = String.fromCharCode(event.keyCode).toLowerCase();
+		var allGuesses = [];
+		// var	userChoice = String.fromCharCode(event.keyCode).toLowerCase();
+		alert(computerChoice);		
 
-	document.onkeyup = function(event) {
-	//console.log(String.fromCharCode(event.keyCode).toLowerCase());
-	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-	var AllGuesses = [];
+		var	numWins	= 0;
+		var	numLost = 0;
+		var guessLeft = 9;
 	
-	console.log(userGuess)
-	AllGuesses.push(userGuess);
+	document.onkeyup = function(event) {
+		//console.log(String.fromCharCode(event.keyCode).toLowerCase());
+		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+		
+		console.log(userGuess)
+		allGuesses.push(userGuess);
 
-		document.getElementById("guesses").innerHTML = 'Your Guesses so far:' + ' ' + AllGuesses;
+		if (userGuess == computerChoice) {
+			numWins++;
+		
+		}else if (userGuess != computerChoice) {
+			guessLeft--;
+		}
+		if (guessLeft == 0) {
+			numLost++;
+			location.reload();
+		}
+
+
+		document.getElementById("guesses").innerHTML = 'Your Guesses so far:' + ' ' + allGuesses;
+	
+		document.getElementById("wins").innerHTML = 'Wins:' + ' ' + numWins;
+		document.getElementById("losses").innerHTML = 'Losses:' + ' ' + numLost;
+		document.getElementById("NumGueLeft").innerHTML = 'Guesses Left:' + ' ' + guessLeft;
 	}
 
-		var	NumWins	= 3;
-		var	NumLost = 2;
-		var GuessLeft = 0;
-
-	document.getElementById("wins").innerHTML = 'Wins:' + ' ' + NumWins;
-	document.getElementById("losses").innerHTML = 'Losses:' + ' ' + NumLost;
-	document.getElementById("NumGueLeft").innerHTML = 'Guesses Left:' + ' ' + GuessLeft;
 	</script>
 
 </body>
